@@ -9,6 +9,7 @@ void reverseString(string str) {
         s.push(ch);
     }
 
+    
     while (!s.empty()) {
         cout << s.top();
         s.pop();
@@ -17,8 +18,10 @@ void reverseString(string str) {
 
 int main() {
     string str;
+
     cout << "Enter a string: ";
     cin >> str;
+
     cout << "Reversed string: ";
     reverseString(str);
 
