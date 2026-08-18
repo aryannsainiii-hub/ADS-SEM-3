@@ -2,26 +2,28 @@
 using namespace std;
 
 int main() {
-    int n;
-    cout << "Enter a decimal number ";
+    int n, base;
+    int rem[100], i = 0;
+
+    cout << "Enter decimal number: ";
     cin >> n;
 
-    if (n == 0) {
-        cout << "Binary: 0";
-        return 0;
-    }
-
-    int binary[32], i = 0;
+    cout << "Enter base: ";
+    cin >> base;
 
     while (n > 0) {
-        binary[i] = n % 2;
-        n = n / 2;
+        rem[i] = n % base;
+        n = n / base;
         i++;
     }
 
-    cout << "Binary: ";
+    cout << "Converted number: ";
+
     for (int j = i - 1; j >= 0; j--) {
-        cout << binary[j];
+        if (rem[j] < 10)
+            cout << rem[j];
+        else
+            cout << char('A' + rem[j] - 10);
     }
 
     return 0;
