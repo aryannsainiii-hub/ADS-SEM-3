@@ -30,7 +30,7 @@ public:
         return count == 0;
     }
 
-    void insertFront(int value) {
+    void insertfront(int value) {
         if (isFull()) {
             cout << "deque is full" << endl;
             return;
@@ -42,7 +42,7 @@ public:
         }
     }
 
-    void insertRear(int value){
+    void insertrear(int value){
         if(isFull()){
             cout<<"deque is full"<<endl;
             return;
@@ -57,7 +57,7 @@ public:
     }
 
 
-    void deleteFront(){
+    void deletefront(){
         if(isEmpty()){
             cout<<"deque is empty"<<endl;
             return;
@@ -70,7 +70,7 @@ public:
             rear = -1;
         }
     }
-        void deleteRear() {
+        void deleterear() {
         if (isEmpty()) {
             cout << "Deque is empty" << endl;
             return;
@@ -100,12 +100,12 @@ public:
 
 int main() {
     deque values(5);
-    values.insertRear(20);
-    values.insertRear(30);
-    values.insertFront(10);
+    values.insertrear(20);
+    values.insertrear(30);
+    values.insertfront(10);
     values.display();
-    values.deleteFront();
-    values.deleteRear();
+    values.deletefront();
+    values.deleterear();
     values.display();
 
     return 0;

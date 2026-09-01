@@ -8,6 +8,7 @@ int main() {
     cout << "Enter decimal number: ";
     cin >> n;
 
+
     cout << "Enter base: ";
     cin >> base;
 
@@ -15,7 +16,7 @@ int main() {
         rem[i] = n % base;
         n = n / base;
         i++;
-    }
+    }   
 
     cout << "Converted number: ";
 
