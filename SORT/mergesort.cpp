@@ -1,45 +1,74 @@
 #include <iostream>
 using namespace std;
 
-int partition(int arr[], int low, int high)
+void merge(int arr[], int low, int mid, int high)
 {
-    int pivot = arr[high];
-    int i = low - 1;
+    int i = low;
+    int j = mid + 1;
+    int k = 0;
 
-    for (int j = low; j < high; j++)
+    int temp[100];
+    while (i <= mid && j <= high)
     {
-        if (arr[j] < pivot)
+        if (arr[i] <= arr[j])
         {
+            temp[k] = arr[i];
             i++;
-            swap(arr[i], arr[j]);
         }
+        else
+        {
+            temp[k] = arr[j];
+            j++;
+        }
+        k++;
+    }
+    while (i <= mid)
+    {
+        temp[k] = arr[i];
+        i++;
+        k++;
     }
 
-    swap(arr[i + 1], arr[high]);
-
-    return i + 1;
+    while (j <= high)
+    {
+        temp[k] = arr[j];
+        j++;
+        k++;
+    }
+    for (i = low, k = 0; i <= high; i++, k++)
+    {
+        arr[i] = temp[k];
+    }
 }
-
-void quickSort(int arr[], int low, int high)
+void mergeSort(int arr[], int low, int high)
 {
     if (low < high)
     {
-        int pi = partition(arr, low, high);
+        int mid = (low + high) / 2;
 
-        quickSort(arr, low, pi - 1);
-        quickSort(arr, pi + 1, high);
+        mergeSort(arr, low, mid);
+
+        mergeSort(arr, mid + 1, high);
+
+        merge(arr, low, mid, high);
     }
 }
 
 int main()
 {
-    int arr[] = {10, 7, 8, 9, 1, 5};
-    int n = 6;
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+  int arr[100];
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
 
-    quickSort(arr, 0, n - 1);
+    mergeSort(arr, 0, n - 1);
 
     cout << "Sorted array: ";
-
     for (int i = 0; i < n; i++)
     {
         cout << arr[i] << " ";
