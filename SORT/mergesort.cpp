@@ -1,43 +1,23 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
-
-void swap(int &a, int &b)
-{
-    int temp;
-    temp = a;
-    a = b;
-    b = temp;
-}
 
 int partition(int arr[], int low, int high)
 {
-    int pivot = arr[low];
+    int pivot = arr[high];
+    int i = low - 1;
 
-    int i = low + 1;
-    int j = high;
-
-    while (true)
+    for (int j = low; j < high; j++)
     {
-        while (i <= high && arr[i] <= pivot)
+        if (arr[j] < pivot)
         {
             i++;
-        }
-
-        while (j >= low && arr[j] > pivot)
-        {
-            j--;
-        }
-
-        if (i < j)
-        {
             swap(arr[i], arr[j]);
         }
-        else
-        {
-            swap(arr[low], arr[j]);
-            return j;
-        }
     }
+
+    swap(arr[i + 1], arr[high]);
+
+    return i + 1;
 }
 
 void quickSort(int arr[], int low, int high)
