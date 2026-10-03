@@ -32,7 +32,7 @@ char pop()
         top--;
         return value;
     }
-}
+}//
 
 bool isEmpty()
 {
