@@ -72,4 +72,4 @@ int main()
     delete[] stack;
 
     return 0;
-}
+}///
